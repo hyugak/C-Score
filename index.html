@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>C-Score</title>
+        <link href="https://github.com/necolas/normalize.css/blob/master/normalize.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body onload="AjaxConnect('score','php/GetEventList.php','noparam=noparam','get');">
+        
+        <div class="score" id="score">
+            Error:DB_CONNECT_INDEX
+        </div>
+        
+        <footer>
+            <p>
+            &copy;Akari 2016-2018<br>
+            SpecialThanks "Hyuga Kobayashi" &amp; "Yousuke Matoba"
+            </p>
+        </footer>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
+        <script src="js/ajax.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/noconflict.js"></script>
+    </body>
+</html>
