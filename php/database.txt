@@ -1,0 +1,11 @@
+[rank]
+id      管理用ID、ランダム  int
+score   参加点＋順位点      str
+team    チーム名           int
+entry   参加点             int
+
+[point]
+id      管理用ID       int
+point   ポイント        int
+rank    順位           int
+class   クラス名        str
