@@ -8,13 +8,10 @@ session_start();
 //XMLをオブジェクトごとに配列化
 
 
-//DBコネクト
-require_once('db_connect.php');
-
-//順位、チーム名をDB登録
+//クラス名ごとに配列化
 
 
-//Exit
+require_once('rank_input.php');
 
 
 ?>
