@@ -1,7 +1,7 @@
 [rank]
 id      管理用ID、ランダム  int
-score   参加点＋順位点      str
-team    チーム名           int
+score   参加点＋順位点      int
+team    チーム名           str
 entry   参加点             int
 
 [point]
