@@ -1,18 +1,12 @@
 var myajax;
-function AjaxConnect(container,accessurl,paramet,method) {
-    jQuery.noConflict();
-    jQuery(document).ready(function(){
-	// ここでは、$はprototypeの動作をします。
-	// jQueryオブジェクトとしての$は一切使えず、その場合は$()ではなくjQuery()と表記する必要があります。
-
-    
+function execute(container,accessurl,paramet,method) {
 	myajax = new Ajax.PeriodicalUpdater(
 		container,
 		accessurl,
 		{
 			"method": method,
 			"parameters": paramet,
-			frequency: 3600, // 1時間ごとに実行
+			frequency: 60, // 1時間ごとに実行
 			onSuccess: function(request) {
 				// 成功時の処理を記述
 				// alert('成功しました');
@@ -40,13 +34,5 @@ function AjaxConnect(container,accessurl,paramet,method) {
 			onException: function (request) {
 				alert('読み込み中にエラーが発生しました');
 			}
-		}
-	);
-    
-    });
-}
-function AjaxConnectStop() {
-	if (myajax != null && myajax != undefined) {
-		myajax.stop();
-	}
-}
+		}); 
+};
