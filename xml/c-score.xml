@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mulka version="2.02" type="application/mulka+xml">
+	<style>
+
+		<name>c-score</name>
+		<version>1.0</version>
+		<author>Kengo Tomoda</author>
+		<target>all</target>
+		<method>file</method>
+		<type>result-list</type>
+		<select></select>
+
+		<command>
+            <export>
+				<folder>C:\temp</folder>
+				<file-name>c-score.json</file-name>
+				<transform method="unicode-text">c-score.xsl</transform>
+			</export>
+			<action>
+				<execute>$style\datapost.cmd $file</execute>
+			</action>
+		</command>
+
+	</style>
+</mulka>
