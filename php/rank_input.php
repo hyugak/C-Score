@@ -4,10 +4,10 @@
  * みたいな、配列の連想配列だと嬉しい
  * 下のような感じで
  */
-
+/*
 $classes = ['MXJ' => [['OLK', 1], ['OLC',1],['KOLC', 1 ],['tohoku', 4 ],['tsukuba', 5 ],['tortise', 6 ],['ClubAjari',6],['tohoku',6],['OLC', 6]],
             'WXJ' => [['OLK',1 ], ['KOLC',2], ['OLC', 3 ],['San-Susi', 4 ],['tsukuba', 5 ],['tortise', 6 ],]];
-
+*/
 
 //DBコネクト
 require_once('db_connect.php');
@@ -107,7 +107,6 @@ function add_point($dbh, $class_name, $team_scores, $awards){
     return $team_scores;
 }
 print_r($team_scores);
-
 //配列をDB登録
 $query = "UPDATE rank SET score = :score WHERE team = :team";
 $sth = $dbh->prepare($query);
