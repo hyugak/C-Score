@@ -31,6 +31,8 @@ $json = mb_convert_encoding($json,'UTF-8','UTF-16LE');
 //連想配列化
 $array = json_decode($json, true);
 
+var_dump($array);
+
 
 //配列から参考・空白削除
 $classes = array();
@@ -47,11 +49,12 @@ foreach($array as $arr_classes => $arr_class){
         }
     }
     
-    var_dump($class_arr);
+    print_r($class_arr);
     print "<br><br>";
     
-    array_push($classes,array($arr_classes => $class_arr));
+    $classes = $classes + array($arr_classes => $class_arr);
 }
+print_r($classes);
 
 //呼び出し
 require_once('rank_input.php');
