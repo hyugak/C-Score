@@ -15,7 +15,7 @@ require_once('db_connect.php');
         <td>
             <input type="hidden" name="id" value="{$id}">
             <input type="submit" value="変更">
-        <td>
+        </td>
     </form>    
 </tr>
 */
