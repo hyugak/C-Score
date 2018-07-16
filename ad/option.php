@@ -8,17 +8,17 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
         <link href="style.css" rel="stylesheet">
     </head>
-    <body onload="executeA('scorelist','../php/db_output.php','noparam=noparam','get');"> 
-        <a style="text-align:center;font-size:2em;" target="_self" href="option.php">各チームの設定をする</a>
+    <body onload="executeA('optionlist','php/ad_all_list.php','noparam=noparam','get');"> 
         <div style="text-align:center;font-size:2em;" class="container centered" id="display"></div>
         <table class="container centered">
             <thead>
                 <tr>
                     <th>チーム名</th>
-                    <th>ポイント</th>
+                    <th>参加点</th>
+                    <th>操作</th>
                 </tr>
             </thead>
-            <tbody id="scorelist">
+            <tbody id="optionlist">
             </tbody>
         </table>
         

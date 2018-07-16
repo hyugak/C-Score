@@ -1,6 +1,4 @@
 <?php
-var_dump($_FILES);
-
 //アップロード処理
 $tempfile = $_FILES['file']['tmp_name'];
 $filename = $_FILES['file']['name'];
@@ -16,60 +14,47 @@ if (is_uploaded_file($tempfile)) {
 } 
 
 //文字列読み込み
-$fp = fopen('c-score.json','r');
-while(!feof($fp)){
-    $line = fgets($fp);
-    $json = "{$json}{$line}";
-}
-fclose($fp);
-//var_dump($json);
+$json = file_get_contents('c-score.json');
+
+//BOM削除
+$json = substr($json,2);
+
+//ダブルクオーテーション変換
+$json = str_replace('&quot;','"',$json);
 
 //文字列コンバート
 $json = mb_convert_encoding($json,'UTF-8','UTF-16LE');
-
-var_dump($json);
-
-//文字列エスケープ処理
-$json = addslashes($json);
-var_dump($json);
-
-
-echo "<br><br>";
-
-//エンコード方法の調査
-echo mb_detect_encoding($json);
 
 //連想配列化
 $array = json_decode($json, true);
 
 
-//エラーチェック
-    switch (json_last_error()) {
-        case JSON_ERROR_NONE:
-            echo ' - No errors';
-        break;
-        case JSON_ERROR_DEPTH:
-            echo ' - Maximum stack depth exceeded';
-        break;
-        case JSON_ERROR_STATE_MISMATCH:
-            echo ' - Underflow or the modes mismatch';
-        break;
-        case JSON_ERROR_CTRL_CHAR:
-            echo ' - Unexpected control character found';
-        break;
-        case JSON_ERROR_SYNTAX:
-            echo ' - Syntax error, malformed JSON';
-        break;
-        case JSON_ERROR_UTF8:
-            echo ' - Malformed UTF-8 characters, possibly incorrectly encoded';
-        break;
-        default:
-            echo ' - Unknown error';
-        break;
+//配列から参考・空白削除
+$res_arr = array();
+foreach($array as $arr_classes => $arr_class){
+    $class_arr = array();
+    $class_rank = 0;
+    $class_team = "";
+    foreach($arr_class as list($class_rank,$class_team)){
+        if($class_rank === "参" or $class_rank === "" or $class_team === ""){
+            
+        }else{
+            $class_rank = intval($class_rank);
+            array_push($class_arr,array($class_team,$class_rank));
+        }
     }
+    
+    var_dump($class_arr);
+    print "<br><br>";
+    
+    $res_arr = $res_arr + array($arr_classes => $class_arr);
+}
 
+print_r($res_arr);
+print "<br><br>";
 
+$sample = ['MXJ' => [['OLK', 1], ['OLC',1],['KOLC', 1 ],['tohoku', 4 ],['tsukuba', 5 ],['tortise', 6 ],['ClubAjari',6],['tohoku',6],['OLC', 6]],
+            'WXJ' => [['OLK',1 ], ['KOLC',2], ['OLC', 3 ],['San-Susi', 4 ],['tsukuba', 5 ],['tortise', 6 ],]];
 
-
-var_dump($array);
+print_r($sample);
 ?>

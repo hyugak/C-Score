@@ -29,10 +29,10 @@ function execute(container,accessurl,paramet,method) {
 				//  eval("json="+request.responseText);
 			},
 			onFailure: function(request) {
-				alert('読み込みに失敗しました');
+				document.getElementById('display').innerHTML = "読み込み失敗";
 			},
 			onException: function (request) {
-				alert('読み込み中にエラーが発生しました');
+				document.getElementById('display').innerHTML = "読み込み中エラー";
 			}
 		}); 
 };
@@ -44,7 +44,7 @@ function executeA(container,accessurl,paramet,method) {
 		{
 			"method": method,
 			"parameters": paramet,
-			frequency: 1, // 1時間ごとに実行
+			frequency: 5, // 1時間ごとに実行
 			onSuccess: function(request) {
 				// 成功時の処理を記述
 				// alert('成功しました');
@@ -60,17 +60,13 @@ function executeA(container,accessurl,paramet,method) {
 				myajax.options.parameters = hash.toQueryString();
 			},
 			onComplete: function(request) {
-				// 完了時の処理を記述
-				// alert('読み込みが完了しました');
-				// jsonの値を処理する場合↓↓
-				//  var json;
-				//  eval("json="+request.responseText);
+                document.getElementById('display').innerHTML = "更新しました";
 			},
 			onFailure: function(request) {
-				alert('読み込みに失敗しました');
+				document.getElementById('display').innerHTML = "読み込み失敗";
 			},
 			onException: function (request) {
-				alert('読み込み中にエラーが発生しました');
+				document.getElementById('display').innerHTML = "読み込み中エラー";
 			}
 		}); 
 };
